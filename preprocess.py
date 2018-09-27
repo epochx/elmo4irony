@@ -1,5 +1,7 @@
 import re
 import os
+import sys
+
 import argparse
 from src.config import (PREPARED_DATA_PATH, PREPROCESSED_DATA_PATH,
                         URL_TOKEN, USR_TOKEN, HASHTAG_TOKEN)
@@ -82,6 +84,8 @@ if __name__ == "__main__":
                         help='Maximum length to add to dataset')
 
     args = parser.parse_args()
+
+    sys.stdout.write(f"Preprocessing {args.dataset}...\n")
 
     dataset_path = os.path.join(PREPARED_DATA_PATH, args.dataset)
     if not os.path.exists(dataset_path):

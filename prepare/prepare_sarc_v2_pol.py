@@ -11,6 +11,8 @@ Tweet = namedtuple('Tweet', ['string', 'label', 'index'])
 parser = argparse.ArgumentParser(description='', add_help=False)
 
 parser.add_argument('path', help='Path to corpus folder')
+parser.add_argument('destination_path',
+                    help='Directory where prepared files will be saved')
 
 args = parser.parse_args()
 
@@ -45,7 +47,7 @@ train_tweets, valid_tweets, _ = split_list(dev_tweets,
                                            valid_ratio=0.2,
                                            test_ratio=0.0)
 
-output_path = 'sarc-v2-pol'
+output_path = os.path.join(args.destination_path, 'sarc-v2-pol')
 
 if not os.path.exists(output_path):
     os.makedirs(output_path)

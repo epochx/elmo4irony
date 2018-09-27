@@ -30,9 +30,12 @@ def read_platek_dataset(path):
 
     return tweets
 
+
 parser = argparse.ArgumentParser(description='', add_help=False)
 
 parser.add_argument('path', help='Path to corpus folder')
+parser.add_argument('destination_path',
+                    help='Directory where prepared files will be saved')
 
 args = parser.parse_args()
 
@@ -44,7 +47,7 @@ train_tweets, valid_tweets, test_tweets = split_list(tweets,
                                                      valid_ratio=0.1,
                                                      test_ratio=0.2)
 
-output_path = 'platek-sarcasm'
+output_path = os.path.join(args.destination_path, 'platek-sarcasm')
 
 if not os.path.exists(output_path):
     os.makedirs(output_path)

@@ -5,6 +5,8 @@ import argparse
 parser = argparse.ArgumentParser(description='', add_help=False)
 
 parser.add_argument('path', help='Path to corpus folder')
+parser.add_argument('destination_path',
+                    help='Directory where prepared files will be saved')
 
 args = parser.parse_args()
 
@@ -23,7 +25,8 @@ with open(train_file_path) as f:
         else:
             dev_lines.append(line)
 
-output_path = 'semeval-2018-irony'
+
+output_path = os.path.join(args.destination_path, 'semeval-2018-irony')
 
 if not os.path.exists(output_path):
     os.makedirs(output_path)

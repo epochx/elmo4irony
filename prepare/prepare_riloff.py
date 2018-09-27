@@ -9,7 +9,7 @@ Tweet = namedtuple('Tweet', ['string', 'label', 'index'])
 
 def read_riloff_dataset(path):
     tweets_file_path = os.path.join(path, 'sarcasm-annos-emnlp13.tweets.tsv')
-    labels_file_path = os.path.join(path, 'sarcasm-annos-emnlp13.tsv')
+    labels_file_path = os.path.join(path, 'sarcasm-data', 'sarcasm-annos-emnlp13.tsv')
 
     tweets = []
     strings = []
@@ -38,6 +38,8 @@ def read_riloff_dataset(path):
 parser = argparse.ArgumentParser(description='', add_help=False)
 
 parser.add_argument('path', help='Path to corpus folder')
+parser.add_argument('destination_path',
+                    help='Directory where prepared files will be saved')
 
 args = parser.parse_args()
 
@@ -47,7 +49,7 @@ train_tweets, valid_tweets, test_tweets = \
     split_list(tweets, shuffle=True,
                train_ratio=0.7, valid_ratio=0.1, test_ratio=0.2)
 
-output_path = 'riloff-sarcasm-data'
+output_path = os.path.join(args.destination_path, 'riloff-sarcasm-data')
 
 if not os.path.exists(output_path):
     os.makedirs(output_path)

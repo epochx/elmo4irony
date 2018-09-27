@@ -11,7 +11,7 @@ wget http://nlp.cs.princeton.edu/SARC/2.0/main/comments.json.bz2
 wget http://nlp.cs.princeton.edu/SARC/2.0/main/train-balanced.csv.bz2
 wget http://nlp.cs.princeton.edu/SARC/2.0/main/test-balanced.csv.bz2
 
-bunzip comments.json.bz2
-bunzip train-balanced.csv.bz2
-bunzip test-balanced.csv.bz2
+bzip2 -dk comments.json.bz2
+bzip2 -dk train-balanced.csv.bz2
+bzip2 -dk test-balanced.csv.bz2
 

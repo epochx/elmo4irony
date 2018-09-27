@@ -6,6 +6,7 @@ from split import split_list
 
 Tweet = namedtuple('Tweet', ['string', 'label', 'index'])
 
+
 def read_iac_v1_dataset(path):
     v1_data = []
 
@@ -29,9 +30,12 @@ def read_iac_v1_dataset(path):
 
     return v1_data
 
+
 parser = argparse.ArgumentParser(description='', add_help=False)
 
 parser.add_argument('path', help='Path to corpus folder')
+parser.add_argument('destination_path',
+                    help='Directory where prepared files will be saved')
 
 args = parser.parse_args()
 
@@ -43,7 +47,7 @@ train_tweets, valid_tweets, test_tweets = split_list(tweets,
                                                      valid_ratio=0.1,
                                                      test_ratio=0.2)
 
-output_path = 'iac-v1'
+output_path = os.path.join(args.destination_path, 'iac-v1')
 
 if not os.path.exists(output_path):
     os.makedirs(output_path)

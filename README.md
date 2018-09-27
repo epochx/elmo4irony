@@ -49,7 +49,7 @@ If you want to clone the repo in a different place than your home directory, ple
     > the `consumer_key`, `consumer_secret`, `access_token_key`, and
     > `access_token_secret` details.
     > 
-    > Note 1: Downloading all the Twitter data will take around 3 hours.
+    > Note 1: Downloading all the Twitter data will take around 24 hours.
     >
     > Note 2: During the download process the script will sleep due to the API's
     > data restrictions.
@@ -78,7 +78,7 @@ python run.py --help
 Run:
 
 ```
-python run.py --corpus <corpus> --save_mode BOTH
+python run.py --corpus <corpus> --write_mode BOTH
 ```
 
 To train a model with the default hyperparameters on the given corpus, and store the output results on disk. Checkpoints and other output files are saved in a directory named after the

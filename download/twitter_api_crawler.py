@@ -28,6 +28,10 @@ if __name__ == "__main__":
     with open(TWITTER_CREDS) as f:
         credentials = json.load(f)
 
+    for key, value in credentials.items():
+        if len(value) == 0:
+            raise Exception(f'Missing {key} in {TWITTER_CREDS}')
+
     api = twitter.Api(**credentials,
                       sleep_on_rate_limit=True)
 
